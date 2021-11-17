@@ -316,7 +316,7 @@ if (isset($md5) && $md5 != $session[3] && $update_sucess === TRUE) {
       if ($session[15] != '') $s = $session[15];
 	  else $s = $lng['some'];
       $sendmessage = $lng['Specified battery level reached.']."\n".$lng['Battery level'].': '.$session[12].' %'."\n".$lng['Remaining charging time'].': '.$s.' '.$lng['minutes']."\n".$lng['Range'].': '.$session[14].' km'."\n".$lng['Status update'].': '.$session[8].' '.$session[9];
-	  if ($mail_bl === 'Y') mail($username, $zoename, $sendmessage);
+	  if ($mail_bl === 'Y') mail($mail_recipient, $zoename, $sendmessage, 'From: "'.$zoename.'" <'.$mail_sender.'>', '-f '.$mail_sender);
 	  if ($cmon_bl === 'Y') {
 	    $postData = array(
 	      'Content-type: application/vnd.api+json',
@@ -339,7 +339,7 @@ if (isset($md5) && $md5 != $session[3] && $update_sucess === TRUE) {
   if ($mail_csf === 'Y' || !empty($exec_csf)) {
     $sendmessage = $lng['Charging finished.']."\n".$lng['Battery level'].': '.$session[12].' %'."\n".$lng['Range'].': '.$session[14].' km'."\n".$lng['Status update'].': '.$session[8].' '.$session[9];
     if ($session[6] == 'Y' && $session[10] != 1) {
-	  if ($mail_csf === 'Y') mail($username, $zoename, $sendmessage);
+	  if ($mail_csf === 'Y') mail($mail_recipient, $zoename, $sendmessage, 'From: "'.$zoename.'" <'.$mail_sender.'>', '-f '.$mail_sender);
       if (!empty($exec_csf)) shell_exec($exec_bl.' "'.$sendmessage.'"');
 	}
 	if ($session[10] == 1) $session[6] = 'Y';
