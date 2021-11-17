@@ -15,6 +15,12 @@ $vin = 'VF1...';
 //Save data in database.csv: Y for yes or N for no
 $save_in_db = 'N';
 
+//Set recipient address
+$mail_recipient = 'sender@example.com'
+
+//Set sender address, seperate multiple recpient by comma
+$mail_sender = 'recipient@example.com'
+
 //If battery level is reached:
 //Send mail: Y for yes or N for no
 $mail_bl = 'N';
